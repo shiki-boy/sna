@@ -23,6 +23,8 @@ from apps.user.views import SnaVerifyEmailView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/auth/", include(("apps.user.urls", "user"), namespace="auth-api")),
+    path("api/friend/", include(("apps.friend.urls", "friend"), namespace="friend-api")),
+
     re_path(
         r"api/auth/registration/account-confirm-email/",
         SnaVerifyEmailView.as_view(),

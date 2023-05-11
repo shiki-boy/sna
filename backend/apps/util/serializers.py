@@ -4,10 +4,9 @@ from apps.util.utils import custom_get_object_or_404
 
 
 class UIDField(serializers.Field):
-
     def __init__(self, *args, **kwargs):
-        self.model = kwargs.pop('model')
-        self.field = kwargs.pop('field', None) 
+        self.model = kwargs.pop("model")
+        self.field = kwargs.pop("field", None)
         super().__init__(*args, **kwargs)
 
     def to_representation(self, obj):
@@ -15,4 +14,7 @@ class UIDField(serializers.Field):
         return value
 
     def to_internal_value(self, data):
-        return custom_get_object_or_404(self.model, uid=data, message=f"No such {self.model.__name__}")
+        x = custom_get_object_or_404(
+            self.model, uid=str(data), message=f"No such {self.model.__name__}"
+        )
+        return x
