@@ -10,7 +10,11 @@ from django.db.models import Q
 
 from apps.user.models import User
 
-from .serializers import FriendshipSerializer, SearchUserSerializer
+from .serializers import (
+    FriendshipSerializer,
+    ListFriendsSerializer,
+    SearchUserSerializer,
+)
 from .models import Friendship
 
 
@@ -34,7 +38,7 @@ class FriendshipViewset(
         )
 
     def perform_create(self, serializer):
-        serializer.save(friend_r=self.request.user)    
+        serializer.save(friend_r=self.request.user)
 
     def destroy(self, request, *args, **kwargs):
         if self.get_object().friend_r != self.request.user:
@@ -73,3 +77,17 @@ class SearchAPIView(ListAPIView):
 
     def get_queryset(self):
         return User.objects.exclude(is_superuser=True).exclude(is_staff=True)
+
+
+class ListFriendsAPIView(ListAPIView):
+    serializer_class = ListFriendsSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Friendship.objects.all()
+
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .filter(status=Friendship.STATUS_CHOICES.ACCEPTED)
+            .filter(Q(friend_r=self.request.user) | Q(friend_a=self.request.user))
+        )

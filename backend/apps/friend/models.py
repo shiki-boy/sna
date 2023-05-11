@@ -28,8 +28,5 @@ class Friendship(AbstractBaseModel):
         max_length=1, choices=STATUS_CHOICES.choices, default=STATUS_CHOICES.PENDING
     )
 
-    # class Meta:
-    #     unique_together = ('friend_r', 'friend_a')
-
     def __str__(self):
         return f"{self.friend_r} - {self.friend_a} - {self.get_status_display()}"

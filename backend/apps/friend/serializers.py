@@ -35,3 +35,14 @@ class SearchUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("uid", "first_name", "last_name")
+
+
+class ListFriendsSerializer(serializers.ModelSerializer):
+    friend_a = UIDField(model=User)
+    friend_a_name = serializers.ReadOnlyField(source="friend_a.full_name")
+    friend_r = UIDField(model=User)
+    friend_r_name = serializers.ReadOnlyField(source="friend_r.full_name")
+
+    class Meta:
+        model = Friendship
+        fields = ("uid", "friend_r", "friend_r_name", "friend_a", "friend_a_name")
