@@ -1,2 +1,1 @@
-# sna
-Social Networking application
+# Social Networking application
