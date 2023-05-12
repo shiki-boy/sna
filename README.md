@@ -27,8 +27,8 @@ You would need to have docker installed in your system to run this.
 --- 
 
 ## Features
-- [] API to search other users by email and name
-- [] API to send/accept/reject friend request
-- [] API to list friends
-- [] List pending friend requests
-- [] Users can not send more than 3 friend requests within a minute
+- [x] API to search other users by email and name
+- [x] API to send/accept/reject friend request
+- [x] API to list friends
+- [x] List pending friend requests
+- [x] Users can not send more than 3 friend requests within a minute
