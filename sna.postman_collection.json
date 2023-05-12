@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "258dc3c2-21d0-4fbe-a4ab-15574b70da67",
+		"name": "sna",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6546877"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"u3@example.com\",\r\n    \"password\": \"Test_123\",\r\n    \"first_name\": \"u\",\r\n    \"last_name\": \"3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/register/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json()\r",
+							"pm.environment.set(\"token\", response.access);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"u3@example.com\",\r\n    \"password\": \"Test_123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/login/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/friend/search?search=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"friend",
+						"search"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List friend requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/friend/request",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"friend",
+						"request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete friend request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/friend/request/f46931a9-594e-4335-af47-6d8c6f92e662/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"friend",
+						"request",
+						"f46931a9-594e-4335-af47-6d8c6f92e662",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept or deny request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/friend/request/13b57260-c8b4-47e5-aeab-f078632bbc02/update/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"friend",
+						"request",
+						"13b57260-c8b4-47e5-aeab-f078632bbc02",
+						"update",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create friend request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"friend_a\": \"8901a92a-d1bf-4e57-8423-5f43870c03ba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/friend/request/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"friend",
+						"request",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MzkwMDY0OCwiaWF0IjoxNjgzODE0MjQ4LCJqdGkiOiJhYmQzMjgyMjE0ZDM0Y2Y1YjI0NzhkMjMwYmFjYjRhMCIsInVzZXJfaWQiOjV9.997r752L2pGkKLtMr3BRalEv2WKLYdU0X35pzOy7aZU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/token/refresh/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List my friends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/friend/list/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"friend",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
