@@ -1,0 +1,148 @@
+[
+    {
+        "model": "user.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$L3QeZZCXw8rXQX2OFcHSzw$5bp8ddcYPe6o5jFm19PPN40u+YRtkegNVFRjEVQ3vLI=",
+            "last_login": "2023-05-11T09:41:49.398Z",
+            "is_superuser": true,
+            "uid": "e4d0b097-5b58-4815-919a-1b5c6128c65d",
+            "email": "admin@example.com",
+            "first_name": "",
+            "last_name": "",
+            "phone_number": null,
+            "is_active": true,
+            "is_staff": true,
+            "registered_at": "2023-05-11T09:41:36.511Z",
+            "modified": "2023-05-11T09:41:36.511Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "user.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$K0rdDdAjSUbVl2QhdAbXlD$hODfPAoeu4d8cxWO48J1l3qws9KWyqpKV53HkBY+Vf8=",
+            "last_login": "2023-05-12T04:07:43.927Z",
+            "is_superuser": false,
+            "uid": "a75bf5aa-d785-4f7a-aeff-7025f9b0b5d3",
+            "email": "u1@example.com",
+            "first_name": "u",
+            "last_name": "1",
+            "phone_number": null,
+            "is_active": true,
+            "is_staff": false,
+            "registered_at": "2023-05-11T09:51:25.181Z",
+            "modified": "2023-05-11T09:51:25.405Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "user.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$iaYUhvgc5VsP3adRmyprZl$PmZG40wO1TVLzUc/TeOugCX5VEEZ3TRPxRMnqQ5SbPI=",
+            "last_login": "2023-05-12T04:09:50.118Z",
+            "is_superuser": false,
+            "uid": "6d385876-d9b0-4cd3-9ea1-822aff83cb07",
+            "email": "u2@example.com",
+            "first_name": "u",
+            "last_name": "2",
+            "phone_number": null,
+            "is_active": true,
+            "is_staff": false,
+            "registered_at": "2023-05-11T11:54:20.789Z",
+            "modified": "2023-05-11T11:54:20.952Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "user.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$dz9h3fYvVQ2lQrdt3vKuUW$tzkzbenv0w5DkhCTM8pHDk+Xxa3GQSRGgimKjtZ63+E=",
+            "last_login": "2023-05-12T04:22:25.544Z",
+            "is_superuser": false,
+            "uid": "8901a92a-d1bf-4e57-8423-5f43870c03ba",
+            "email": "u3@example.com",
+            "first_name": "u",
+            "last_name": "3",
+            "phone_number": null,
+            "is_active": true,
+            "is_staff": false,
+            "registered_at": "2023-05-11T12:42:03.215Z",
+            "modified": "2023-05-11T12:42:03.385Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "friend.friendship",
+        "pk": 10,
+        "fields": {
+            "created": "2023-05-11T14:07:39.761Z",
+            "modified": "2023-05-11T14:10:51.198Z",
+            "uid": "bf0be61d-822a-42e0-928c-a12604ae73c2",
+            "friend_r": 3,
+            "friend_a": 5,
+            "status": "A"
+        }
+    },
+    {
+        "model": "friend.friendship",
+        "pk": 11,
+        "fields": {
+            "created": "2023-05-11T14:34:26.844Z",
+            "modified": "2023-05-11T14:34:50.313Z",
+            "uid": "13eee1a6-e912-4fe9-99d0-aeaeac1c6a60",
+            "friend_r": 4,
+            "friend_a": 3,
+            "status": "A"
+        }
+    },
+    {
+        "model": "friend.friendship",
+        "pk": 12,
+        "fields": {
+            "created": "2023-05-12T04:10:00.217Z",
+            "modified": "2023-05-12T04:10:52.124Z",
+            "uid": "82f8b9b7-23a5-4678-b375-14cd681fa0ee",
+            "friend_r": 4,
+            "friend_a": 5,
+            "status": "D"
+        }
+    },
+    {
+        "model": "account.emailaddress",
+        "pk": 1,
+        "fields": {
+            "user": 3,
+            "email": "u1@example.com",
+            "verified": true,
+            "primary": true
+        }
+    },
+    {
+        "model": "account.emailaddress",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "email": "u2@example.com",
+            "verified": true,
+            "primary": true
+        }
+    },
+    {
+        "model": "account.emailaddress",
+        "pk": 3,
+        "fields": {
+            "user": 5,
+            "email": "u3@example.com",
+            "verified": true,
+            "primary": true
+        }
+    }
+]

@@ -12,7 +12,13 @@ You would need to have docker installed in your system to run this.
 - the backend will run on localhost:8000
 - `docker-compose logs -f service-name-here` - to see the logs, service-name = backend | postgres | ...
 
-### Postman API setup
+### Load seed data in DB
+- run `make bash`
+- run `python manage.py loaddata seed.json`
+- superuser credentials - `admin@example.com` & `admin`
+- normal users - `u1@example.com`, `u2@example.com`, `u3@example.com`, password is `Test_123`
+
+## Postman API setup
 - You can import the `sna.postman_collection.json` kept in the project's root
 - [Postman documentation link](https://documenter.getpostman.com/view/6546877/2s93ecuVFd)
 
