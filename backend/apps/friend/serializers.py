@@ -18,6 +18,11 @@ class FriendshipSerializer(serializers.ModelSerializer):
         fields = ("uid", "status_label", "friend_r", "friend_a", "created")
 
     def create(self, validated_data):
+        if validated_data["friend_r"] == validated_data["friend_a"]:
+            raise serializers.ValidationError(
+                detail={"message": "Cannot send a friend request to self"}
+            )
+
         # checking if already exists or not
         if Friendship.objects.filter(
             Q(friend_r=validated_data["friend_r"], friend_a=validated_data["friend_a"])

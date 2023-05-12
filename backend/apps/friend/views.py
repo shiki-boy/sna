@@ -29,6 +29,11 @@ class FriendshipViewset(
     lookup_url_kwarg = "uid"
     lookup_value_regex = "[0-9a-f-]{36}"
 
+    def get_throttles(self):
+        if self.action == "create":
+            self.throttle_scope = "create-friend-request"
+        return super().get_throttles()
+
     def get_queryset(self):
         return (
             super()
@@ -36,6 +41,9 @@ class FriendshipViewset(
             .filter(status=Friendship.STATUS_CHOICES.PENDING)
             .filter(Q(friend_r=self.request.user) | Q(friend_a=self.request.user))
         )
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         serializer.save(friend_r=self.request.user)
@@ -51,7 +59,7 @@ class FriendshipViewset(
         if obj.friend_a != self.request.user:
             return Response({"message": "You cannot update this request"}, 403)
 
-        status = self.request.query_params.get("status", None)
+        status = self.request.data.get("status", None)
 
         if (
             not status
@@ -76,7 +84,11 @@ class SearchAPIView(ListAPIView):
     search_fields = ["first_name", "last_name", "=email"]
 
     def get_queryset(self):
-        return User.objects.exclude(is_superuser=True).exclude(is_staff=True)
+        return (
+            User.objects.exclude(id=self.request.user.id)
+            .exclude(is_superuser=True)
+            .exclude(is_staff=True)
+        )
 
 
 class ListFriendsAPIView(ListAPIView):

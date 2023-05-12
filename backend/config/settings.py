@@ -105,6 +105,13 @@ REST_FRAMEWORK = {
         "django_filters.rest_framework.DjangoFilterBackend",
         "rest_framework.filters.OrderingFilter",
     ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'dj_rest_auth': '10/minute',
+        'create-friend-request': '3/minute',
+    }
     # 'EXCEPTION_HANDLER': 'apps.util.permissions.custom_exception_handler'
 }
 
